@@ -33,7 +33,7 @@ umd_fees_pct <- umd_fees |> mutate(pct_change = (`Fall 2026`- `Fall 2021`)/`Fall
 
 Write a few sentences about what you found in those percentages. What's the story here? What questions do you have?
 
-
+I noticed that student sustainability increased by 150% from fall 2021 to fall 2026. The shuttle bus fees also increased a lot, specifically by 58% over that same course of time. That would probably be the most important factor if writing a story about these changes. For total fees, the difference was an increase of 25% from 1,455 in fall 2021 to 1,820 in fall 2026. Why has athletics stayed the same?
 
 
 When you are done, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
