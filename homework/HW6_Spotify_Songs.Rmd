@@ -7,11 +7,13 @@ In this assignment, you will be working with a dataset of songs played on Spotif
 ### Task 1: Load the tidyverse
 
 ```{r}
+library(tidyverse)
 ```
 
 ### Task 2: Load the Spotify Songs dataset from https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/spotify_2020.csv
 
 ```{r}
+spotify_songs <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/spotify_2020.csv")
 ```
 
 ### Task 3: Calculate the mean and standard deviation of the danceability scores
@@ -19,6 +21,8 @@ In this assignment, you will be working with a dataset of songs played on Spotif
 Write code to calculate the mean standard deviation of the danceability scores in the Spotify dataset. Display those.
 
 ```{r}
+mean(spotify_songs$danceability)
+sd(spotify_songs$danceability)
 ```
 
 ### Task 4: Create a histogram of the danceability scores
@@ -26,6 +30,8 @@ Write code to calculate the mean standard deviation of the danceability scores i
 Write code to create a histogram of the danceability scores in the Spotify dataset, based on the example we did in class.
 
 ```{r}
+ggplot(spotify_songs, aes(x = danceability)) +
+  geom_histogram()
 ```
 
 ### Task 5: Add a line to the histogram for the mean danceability score
@@ -33,11 +39,17 @@ Write code to create a histogram of the danceability scores in the Spotify datas
 Write code to add a vertical line to the histogram for the mean danceability score, based on the example in class.
 
 ```{r}
+ggplot(spotify_songs, aes(x = danceability)) +
+  geom_histogram() +
+  geom_vline(xintercept = mean(spotify_songs$danceability))
 ```
 
 ### Task 6: Describe our results
 
 Write a few sentences about the distribution of danceability scores in the Spotify dataset. Is it a normal distribution, or is it skewed in one direction? What does the mean and distribution tell us about the songs in the dataset?
+
+The datasets show the range of how danceable the songs are, with scores ranging from relatively low to relatively high. The histogram shows that the distribution is not perfectly normal. Instead, the scores are concentrated around the middle-to-high range, with fewer songs at the lowest and highest levels of danceability. This made me think that most of the songs in the dataset have moderate to relatively high danceability. 
+
 
 ### Task 7: Save Your Work and Put it on GitHub
 
