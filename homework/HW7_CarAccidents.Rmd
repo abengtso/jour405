@@ -32,7 +32,7 @@ library(lubridate)  # For working with dates
 Load the accident data from our CSV file at https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/daily_accidents.csv into a dataframe called `accidents`:
 
 ```{r load-data}
-
+accidents <-read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/daily_accidents.csv")
 ```
 
 ## Data Exploration
@@ -68,7 +68,7 @@ ggplot(accidents, aes(x = date, y = total)) +
 ### Task 2 (3 points)
 Looking at the time series visualization above, identify at least two noticeable patterns or anomalies. What questions would you want to investigate further based on this initial view of the data? How might these visual patterns translate into potential story angles?
 
-ANSWER HERE
+Why was there a spike in accidents right before 2022? Why has over time, the amount of accidents been increasing?
 
 The daily data is quite noisy, so let's also look at weekly patterns:
 
@@ -107,7 +107,7 @@ ggplot(accidents, aes(x = day_of_week, y = total)) +
 ### Task 3 (2 points)
 Based on the day-of-week analysis, which day(s) have the highest and lowest average accidents? Why might these patterns exist?
 
-ANSWER HERE
+Fridays and Saturdays have the highest, most likely because people are out drinking or driving late at night. The lowest days are like Monday through Thursday, probably because people are in work all day and aren't out super late at night. 
 
 ## Calculating Z-Scores
 
@@ -119,9 +119,9 @@ Now, using the accidents dataframe, add three columns using `mutate()`: mean_acc
 # Calculate z-scores for total accidents
 accidents <- accidents |>
   mutate(
-    mean_accidents = REPLACE_ME,
-    sd_accidents = REPLACE_ME,
-    z_score = (REPLACE_ME - REPLACE_ME) / REPLACE_ME
+    mean_accidents = mean(total),
+    sd_accidents = sd(total),
+    z_score = (total - mean_accidents) / sd_accidents
   )
 
 # Display the data with z-scores
@@ -156,7 +156,7 @@ unusual_days |>
 ### Task 5 (3 points)
 Choose one of the top 10 unusual days and research what might have happened on that date. Look for weather events, holidays, major incidents, or other factors that could explain the unusual number of accidents. Briefly describe your findings and how you would incorporate this context into a story.
 
-ANSWER HERE
+2021-11-29	Mon was a cyber monday, right after Thanksgiving and it only had a score of 1, which is really low. I think that is because after Thanksgiving, you have a lot of leftovers so no one goes out to eat, and it's cyber monday so people shop online instead on in-store. You could write a story about how the roads are safest right after Thanksgiving and why. 
 
 Let's visualize these unusual days:
 
@@ -207,7 +207,7 @@ unusual_dow |>
 ### Task 7 (3 points)
 Compare the days that have extreme z-scores overall versus those with extreme day-of-week z-scores. How do these lists differ? What journalistic insights can you draw from comparing these two different approaches to measuring "unusual" days?
 
-ANSWER HERE
+
 
 Let's see how many unusual days we have for each day of the week:
 
@@ -286,7 +286,7 @@ unusual_monthly |>
 ### Task 8 (2 points)
 Based on the monthly pattern analysis, which months have the highest and lowest average accidents? Develop a hypothesis about why these seasonal patterns exist.
 
-ANSWER HERE
+The highest months are October, November and December. I think that is probably because of the holidays, people travel a lot more. 
 
 ## Identifying Extreme Outliers
 
@@ -311,9 +311,18 @@ if(nrow(extreme_outliers) > 0) {
 ### Task 9 (2 points)
 For the extreme outliers identified (z-scores beyond ±3), what do they have in common?
 
-ANSWER HERE
+They are all weekend days except for one. A good amount of them are from 2021.
 
 ## Your Best Story Pitch
 
 ### Task 10 (5 points)
 Based on all the analyses performed, craft your best story pitch, including a headline and lede. Be sure to include what kinds of sources/people you'd talk to for the story.
+
+
+Talking about drunk driving or being on the roads late at night on the weekends. 
+
+WEEKEND ROADS AND DRIVERS SEE A SPIKE IN ACCIDENTS. 
+
+AS WEEKEND TRAFFIC PICKS UP, SO DO ALCOHOL-RELATED CRASHES, IMPAIRED DRIVING BEING A LEADING CAUSE OF FATAL COLLISIONS. AUTHORITIES ARE URGING DRIVERS TO NOT DRIVE SUPER LATE AT NIGHT, TO ALWAYS DESIGNAT3E A SOBER DRIVER OR USE A CAR SERVICE. 
+
+ I would talk to authorities, maybe someone who lost a loved one in a crash, people that have survived these crashes, etc. 
