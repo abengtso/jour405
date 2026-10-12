@@ -1,5 +1,5 @@
 ---
-title: "HW8_MandMs"
+title: "HW8_MandMs1" 
 ---
 
 In this assignment, you'll be picking up where you left off with the M&Ms activity. You'll load the data and perform some basic statistical analysis. Follow the steps below to complete the assignment.
@@ -58,6 +58,6 @@ I don't know, it's giving me inconclusive answers
 
 Write a few sentences about what you found in the data. What does this tell you about the M&Ms dataset and about the act of random sampling?
 
-It was similar to the in class stats where we learned that the data is more sporadic in smaller groups, but in a big population, it makes more sense and is more even. 
+It was similar to the in class stats where we learned that the data is more sporadic in smaller groups, but in a big population, it makes more sense and is more even.  
 
 When finished, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
