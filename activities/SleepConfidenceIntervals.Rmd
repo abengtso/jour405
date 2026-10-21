@@ -135,6 +135,7 @@ sleep_stats |>
   c) "Survey: Students Getting Recommended Amount of Sleep"
 
 I choose C because the fact that the entire CI is at or above 7 means that students are getting the recommended amount of sleep. 
+cngsa
 
 ### Task 7: What about a bigger sample?
 
