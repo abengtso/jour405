@@ -58,4 +58,4 @@ weekly_wmata |>
 
 **Answer this question:** Describe the trend you see. Is ridership going up, down, or staying flat? What are the big dips, and what might explain them? What would you want to know before writing a story about Metro weekly ridership trends?
 
-ANSWER HERE
+The ridership is somewhat consistent because it had a big increase followed by a big decrease and then relatively similar for the rest. Over time though, it has increased from about 3.25 million to about 5.75 million.
