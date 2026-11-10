@@ -1,0 +1,107 @@
+---
+title: "data"
+output: html_document
+---
+
+```{r}
+
+```
+```{r}
+library(tidyverse)
+
+college_data <- read_csv(file.choose())
+
+View(college_data)
+
+names(college_data)
+```
+
+```{r}
+college_clean <- college_data %>%
+  select(INSTNM, CONTROL, TUITIONFEE_IN,
+         TUITIONFEE_OUT, NPT4_PUB, NPT4_PRIV,
+         C150_4)
+
+
+college_clean <- college_clean %>%
+  rename(
+    college = INSTNM,
+    type = CONTROL,
+    in_state_tuition = TUITIONFEE_IN,
+    out_state_tuition = TUITIONFEE_OUT,
+    public_net_price = NPT4_PUB,
+    private_net_price = NPT4_PRIV,
+    graduation_rate = C150_4
+  )
+
+
+View(college_clean)
+```
+
+```{r}
+college_clean <- college_clean %>%
+  mutate(
+    college_type = case_when(
+      type == 1 ~ "Public",
+      type == 2 ~ "Private nonprofit",
+      type == 3 ~ "Private for-profit",
+      TRUE ~ NA_character_
+    )
+  )
+```
+
+```{r}
+cor.test(college_clean$in_state_tuition,
+         college_clean$graduation_rate,
+         use = "complete.obs")
+```
+
+```{r}
+college_clean %>%
+  filter(college_type %in% c("Public", "Private nonprofit")) %>%
+  group_by(college_type) %>%
+  summarise(
+    average_graduation = mean(graduation_rate, na.rm = TRUE),
+    average_tuition = mean(in_state_tuition, na.rm = TRUE)
+  )
+```
+
+```{r}
+college_clean <- college_clean %>%
+  mutate(
+    net_price = case_when(
+      type == 1 ~ public_net_price,
+      type == 2 ~ private_net_price,
+      TRUE ~ NA_real_
+    )
+  )
+```
+
+```{r}
+cor.test(college_clean$net_price,
+         college_clean$graduation_rate,
+         use = "complete.obs")
+```
+
+```{r}
+ggplot(college_clean, aes(x = in_state_tuition,
+                          y = graduation_rate)) +
+  geom_point() +
+  labs(
+    title = "Does Higher Tuition Mean Higher Graduation Rates?",
+    x = "Tuition and Fees ($)",
+    y = "Six-Year Graduation Rate"
+  )
+```
+
+```{r}
+ggplot(college_clean, aes(x = college_type,
+                          y = graduation_rate)) +
+  geom_boxplot() +
+  labs(
+    title = "Graduation Rates at Public and Private Colleges",
+    x = "College Type",
+    y = "Six-Year Graduation Rate"
+  )
+```
+
