@@ -2,6 +2,39 @@
 title: "data"
 output: html_document
 ---
+Overall: 
+
+I want to examine whether colleges with higher tuition costs have higher graduation rates. Another question I want to explore is whether the average net price students pay has a relationship with graduation rates. 
+
+1. Descriptive Statistics
+
+I plan to calculate basic descriptive statistics, including the mean, median, minimum, and maximum tuition costs and graduation rates. This will help me understand my dataset and identify differences between colleges. 
+
+2. Correlation Tests
+
+I plan to use correlation tests to examine the relationship between tuition costs and graduation rates. I have already started using the cor.test() function in R to examine this relationship. 
+
+3. Scatterplots
+
+I plan to use ggplot() to create scatterplots showing the relationship between tuition and graduation rates. I have already created a basic scatterplot, but I also want to add a trend line to make the relationship easier to understand. 
+
+4. T-Tests
+
+I may use a t-test to determine whether the difference in average graduation rates between public and private nonprofit colleges is statistically significant. 
+
+5. Linear Regression
+
+I also want to try a linear regression model using lm() to examine whether tuition costs help predict graduation rates. 
+
+6. Data Cleaning 
+
+Before completing my analyses, I will check for missing values and make sure the variables are formatted correctly. 
+
+Expected Findings:
+
+I expect to find some relationship between tuition costs and graduation rates, although I am not sure how strong it will be. 
+
+
 
 ```{r}
 
