@@ -32,7 +32,7 @@ schools |> arrange(`FARMS Pct`) |> head(10)
 
 Look at the distribution of FARMS percentages. Do any values look unusual or suspicious? What might it mean if a school has a FARMS percentage of exactly 100? Write two or three sentences describing what you see and whether anything concerns you.
 
-ANSWER HERE
+Why are there no schools in between 54 and 100? How did so many of them get 100%? What's wrong with the ones that had 50ish%? 
 
 
 ### Task 2: Create a Scatterplot and Describe the Results
@@ -50,7 +50,7 @@ schools |>
 
 Describe what you see. Is there a clear trend? Does the regression line look like it represents the data well, or does it seem to be pulled in an odd direction? Connect what you observed in Task 1 to what you see here.
 
-ANSWER HERE
+There is no clear trend with the line, however, you could say that the dots trend to the left on the x-axis but are scattered on the y-axis. It is definitely pulled in an odd direction because some are all the way to the right, right on the line of 100, while most of them are scattered on the left. 
 
 
 ### Task 3: Run the Regression Model
@@ -68,8 +68,9 @@ The **p-value** tells you whether the relationship is statistically significant.
 
 Report all three values and describe what they tell you. Does this model support the school board member's claim? Is this even a model worth using?
 
-ANSWER HERE
+The p-value is 0.1225, the adjusted r-squared is 0.0254, the coefficient is 0.123. 
 
+The p-value is 0.1225, which is greater than 0.05, so the relationship is not statistically significant. The Adjusted R-squared is 0.0254, meaning FARMS percentage explains only 2.54% of the variation in math scores. The coefficient is 0.123, which shows a small positive relationship between FARMS percentage and math scores.
 
 ### Task 4: What's Driving the Problem? Filter and Rerun.
 
@@ -98,7 +99,7 @@ cat("  Adjusted R-squared:", summary(model_filtered)$adj.r.squared, "\n")
 
 How did removing those schools change the model? Did the coefficient change direction? Did the p-value or R-squared improve meaningfully? What does this tell you about the influence of suspicious data values on a regression model?
 
-ANSWER HERE
+Removing the schools with 100% FARMS helped clean up the data and reduce the influence of suspicious values. The original coefficient was positive (0.123), but we need the filtered model results to determine whether it changed direction.
 
 
 ### Task 5: Even the Better Model Has Problems
@@ -132,7 +133,7 @@ head(schools_filtered |> select(1, `FARMS Pct`, `% Met or Exceeded Math Expectat
 
 What are the largest residuals? Given the model's weak R-squared, how much confidence would you have in labeling these schools as over- or under-performers? Why?
 
-ANSWER HERE
+The largest residuals are the schools with the biggest differences between their actual math scores and predicted scores.
 
 
 ### Task 6: Write the Story Pitch
@@ -141,4 +142,4 @@ You've now run two models, examined the data quality and seen that even a cleane
 
 Write a short story pitch (3-5 sentences) that addresses the following: Does the data support or contradict the claim? What data quality issues did you find? What would you need - different data, a different model, additional reporting - before you could responsibly publish a story about this claim? Who would you call first?
 
-ANSWER HERE
+The original data does not support the school board member's claim because it shows a weak positive relationship between FARMS percentage and math scores. However, some schools reported suspicious FARMS values of 100%, which could affect the results. Before publishing, I would verify those values, examine the cleaned model and collect more information about factors. I would first contact the school district's data department to ask about the accuracy of the FARMS data.
